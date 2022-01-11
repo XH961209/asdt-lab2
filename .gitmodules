@@ -1,0 +1,9 @@
+[submodule "EmplopyeeManagement"]
+	path = EmplopyeeManagement
+	url = git@github.com:XH961209/EmplopyeeManagement.git
+[submodule "UserManagement"]
+	path = UserManagement
+	url = git@github.com:XH961209/UserManagement.git
+[submodule "TaskManagement"]
+	path = TaskManagement
+	url = git@github.com:XH961209/TaskManagement.git
