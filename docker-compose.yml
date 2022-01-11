@@ -1,0 +1,60 @@
+services:
+  zookeeper:
+    image: zookeeper
+    ports:
+      - 2181:2181
+    networks:
+      kafkanet:
+        aliases:
+          - zookeeper_server
+  kafka:
+    image: wurstmeister/kafka
+    environment:
+      KAFKA_CREATE_TOPICS: employee-user:1:1,user-task:1:1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper_server:2181
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka_server:9092
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+    networks:
+      kafkanet:
+        aliases:
+          - kafka_server
+  employee:
+    build: ./EmployeeManagement
+    ports:
+    - 15000:5000
+    - 16379:6379
+    depends_on:
+      - kafka
+    networks:
+      kafkanet:
+        aliases:
+          - employee_server
+  user:
+    build: ./UserManagement
+    ports:
+    - 25000:5000
+    - 26379:6379
+    depends_on:
+      - kafka
+    networks:
+      kafkanet:
+        aliases:
+          - user_server
+  task:
+    build: ./TaskManagement
+    ports:
+    - 35000:5000
+    - 36379:6379
+    depends_on:
+      - kafka
+    networks:
+      kafkanet:
+        aliases:
+          - task_server
+networks:
+  kafkanet:
+    driver: bridge
