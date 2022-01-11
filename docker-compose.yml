@@ -55,6 +55,14 @@ services:
       kafkanet:
         aliases:
           - task_server
+  management:
+    image: rrrelax/redis-kafka
+    tty: true
+    stdin_open: true
+    networks:
+      kafkanet:
+        aliases:
+          - management_server
 networks:
   kafkanet:
     driver: bridge
