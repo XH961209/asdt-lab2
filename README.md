@@ -2,12 +2,19 @@
 高级软件开发技术实验二作业
 ## 项目介绍  
 [asdt-lab2](https://github.com/XH961209/asdt-lab2) 包含三个子项目 [EmployeeManagement](https://github.com/XH961209/EmployeeManagement), [UserManagement](https://github.com/XH961209/UserManagement) 和 [TaskManagement](https://github.com/XH961209/TaskManagement)  
-三个子项目分别是员工管理系统、用户管理系统和任务管理系统，使用**redis**存储数据，使用**kafka**进行系统之间的消息传递  
+三个子项目分别是员工管理系统、用户管理系统和任务管理系统  
 asdt-lab2主要包含一个将所有子系统进行容器化的docker-compose.yml文件  
+### 关键技术
+redis  
+kafka  
+docker
+### 主要功能
+场景1、场景2、场景3中涉及到的功能均已实现  
+支持通过邮件的形式通知用户初始密码
 ## 系统容器化运行
 ### 运行环境
 安装有Docker和Git的任意环境
-### 容器化运行
+### 容器化运行步骤
 首先同步各子模块的最新代码:  
 `git submodule update --init`  
 然后启动各容器:  
