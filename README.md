@@ -31,6 +31,7 @@
 |登录用户系统|curl -i -H "Content-Type: application/json" -X POST -d '{"name":"NAME", "password":"PASSWD"}' http://user_server:5000/user/api/login|NAME: 用户名, 是注册员工时的工号; PASSWD: 密码, 注册时系统会返回一个初始密码|
 |获取任务系统报表|curl -i -H "Content-Type: application/json" -X POST http://task_server:5000/task/api/get_report||
 |更新密码|curl -i -H "Content-Type: application/json" -X POST -d '{"name":"NAME", "old_password":"OLD_PASSWD", "new_password":"NEW_PASSWD"}' http://user_server:5000/user/api/update_password|NAME: 用户名, 指工号; OLD_PASSWD: 旧密码; NEW_PASSWD: 新密码|
+|更换部门|curl -i -H "Content-Type: application/json" -X POST -d '{"name":"NAME", "password": "PASSWD", "department":"DEPARTMENT"}' http://user_server:5000/user/api/reset_department|NAME: 用户名, 指工号; PASSWD: 密码; DEPARTMENT: 要更换的部门|
 ### 查看各系统redis数据库内容
 首先进入asdt-lab2_management_1容器:  
 `docker exec -it asdt-lab2_management_1 /bin/bash`  
