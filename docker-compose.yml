@@ -4,7 +4,7 @@ services:
     ports:
       - 2181:2181
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - zookeeper_server
   kafka:
@@ -19,7 +19,7 @@ services:
     depends_on:
       - zookeeper
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - kafka_server
   employee:
@@ -30,7 +30,7 @@ services:
     depends_on:
       - kafka
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - employee_server
   user:
@@ -41,7 +41,7 @@ services:
     depends_on:
       - kafka
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - user_server
   task:
@@ -52,7 +52,7 @@ services:
     depends_on:
       - kafka
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - task_server
   management:
@@ -60,9 +60,9 @@ services:
     tty: true
     stdin_open: true
     networks:
-      kafkanet:
+      labnet:
         aliases:
           - management_server
 networks:
-  kafkanet:
+  labnet:
     driver: bridge
